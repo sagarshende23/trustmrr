@@ -1,24 +1,41 @@
 # TrustMRR - The Database of Verified Startup Revenues
 
-A Next.js application that replicates the TrustMRR website design and functionality. This platform allows startups to share their verified revenue through Stripe API integration.
+> **🌐 Live Site**: [trustmrr.netlify.app](https://trustmrr.netlify.app)
+
+A modern Next.js application that serves as a comprehensive database of verified startup revenues. This platform allows founders to showcase their startup's revenue data, verified through Stripe API integration, creating transparency and trust in the startup ecosystem.
 
 ## 🚀 Features
 
-- **Leaderboard**: Browse verified startup revenues with real-time data
-- **Categories**: Filter startups by industry/category
-- **Founder Profiles**: View all startups from a specific founder
-- **Add Startup**: Interface for founders to add their startups
-- **Dark Mode**: Full dark mode support with theme toggle
-- **Responsive Design**: Mobile-first responsive design
-- **Verified Revenue**: All revenue verified through Stripe API keys
+### Core Functionality
+- **📊 Leaderboard**: Browse verified startup revenues ranked by revenue/MRR with real-time data updates
+- **🔍 Advanced Search**: Search across startups, founders, and categories with intelligent autocomplete
+- **📁 Categories**: Filter and browse startups by industry/category (19+ categories)
+- **👤 Founder Profiles**: Dedicated pages showcasing all startups from a specific founder
+- **➕ Add Startup**: Streamlined interface for founders to add and verify their startups
+- **📈 Revenue Charts**: Visual representation of revenue trends using Recharts
+- **🎯 Startup Details**: Individual pages for each startup with comprehensive information
+
+### User Experience
+- **🌙 Dark Mode**: Full dark mode support with persistent theme toggle
+- **📱 Responsive Design**: Mobile-first responsive design with optimized layouts for all devices
+- **⚡ Fast Performance**: Optimized with Next.js App Router for lightning-fast page loads
+- **🎨 Modern UI**: Clean, professional interface with smooth animations and transitions
+- **🔒 Verified Data**: All revenue verified through Stripe API keys with hourly updates
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 16.0.3 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS 4
+### Frontend
+- **Framework**: [Next.js 16.0.3](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS 3.4](https://tailwindcss.com/) with custom animations
+- **UI Components**: [Radix UI](https://www.radix-ui.com/) primitives
+- **Charts**: [Recharts](https://recharts.org/) for data visualization
 - **React**: 19.2.0
+
+### Development
 - **Node**: 20+
+- **Package Manager**: npm
+- **Deployment**: Netlify
 
 ## 📦 Installation
 
@@ -43,20 +60,30 @@ npm start
 
 ```
 trustmrr/
-├── app/
+├── app/                      # Next.js App Router pages
 │   ├── add-startup/          # Add startup page
-│   ├── category/[slug]/      # Category pages
-│   ├── founder/[handle]/     # Founder profile pages
-│   ├── globals.css           # Global styles
-│   ├── layout.tsx            # Root layout
+│   ├── category/[slug]/      # Dynamic category pages
+│   ├── founder/[handle]/     # Dynamic founder profile pages
+│   ├── startup/[id]/         # Dynamic startup detail pages
+│   ├── globals.css           # Global styles and Tailwind config
+│   ├── layout.tsx            # Root layout with theme provider
 │   └── page.tsx              # Home page (leaderboard)
-├── components/
+├── components/               # React components
+│   ├── ui/                   # Reusable UI components (shadcn/ui)
+│   ├── Header.tsx            # Header with theme toggle and navigation
 │   ├── Footer.tsx            # Footer component
-│   ├── Header.tsx            # Header with theme toggle
-│   └── StartupCard.tsx       # Startup card component
-├── types/
-│   └── index.ts              # TypeScript interfaces
-└── public/                   # Static assets
+│   ├── StartupCard.tsx       # Startup card component
+│   ├── AddStartupModal.tsx   # Modal for adding startups
+│   ├── AdvertiseModal.tsx    # Modal for advertising
+│   ├── AdvertisementCard.tsx # Advertisement display component
+│   └── RevenueChart.tsx      # Revenue visualization component
+├── lib/                      # Utility libraries
+│   ├── mockStartups.ts      # Mock data for startups
+│   ├── advertisements.ts     # Advertisement data
+│   └── utils.ts             # Helper functions
+├── types/                    # TypeScript type definitions
+│   └── index.ts             # Shared interfaces and types
+└── public/                   # Static assets (images, icons)
 ```
 
 ## 🎨 Design Features
@@ -88,28 +115,39 @@ trustmrr/
 5. **SEO Optimized**: Proper meta tags and semantic HTML
 6. **Accessibility**: ARIA labels and keyboard navigation support
 
-## 📄 Pages
+## 📄 Pages & Routes
 
 ### Home Page (`/`)
-- Leaderboard with top startups
-- Warren Buffett quote section
-- Browse by category section
-- Full responsive design
+- **Leaderboard**: Top startups ranked by revenue/MRR
+- **Search**: Real-time search with autocomplete suggestions
+- **Warren Buffett Quote**: Inspirational section
+- **Browse by Category**: Quick access to 19+ categories
+- **Responsive Layout**: Desktop table view, mobile card view
+- **Sidebar Ads**: Advertisement placement areas
 
 ### Add Startup (`/add-startup`)
-- Instructions for adding a startup
-- Stripe integration (UI ready)
-- Benefits of joining
+- Step-by-step instructions for adding a startup
+- Stripe API integration interface (UI ready)
+- Benefits of joining the platform
+- Revenue verification process
 
 ### Category Page (`/category/[slug]`)
-- Filter startups by category
-- Grid layout for browsing
-- Dynamic routing
+- Filtered view of startups by category
+- Grid layout optimized for browsing
+- Dynamic routing with slug-based URLs
+- Category-specific statistics
 
 ### Founder Page (`/founder/[handle]`)
 - Founder profile information
-- List of founder's startups
-- Social media links
+- Complete list of founder's startups
+- Social media links and contact info
+- Founder's total revenue statistics
+
+### Startup Detail Page (`/startup/[id]`)
+- Comprehensive startup information
+- Revenue charts and trends
+- Historical data visualization
+- Related startups and categories
 
 ## 🔮 Future Enhancements
 
@@ -136,9 +174,63 @@ trustmrr/
 - Safari (latest)
 - Edge (latest)
 
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 20+ installed
+- npm or yarn package manager
+- Git for version control
+
+### Quick Start
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd trustmrr
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run development server**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+4. **Build for production**
+   ```bash
+   npm run build
+   npm start
+   ```
+
+## 🧪 Development
+
+### Available Scripts
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
+
+### Environment Variables
+Create a `.env.local` file for environment-specific configuration:
+```env
+# Add your environment variables here
+# STRIPE_API_KEY=your_stripe_key
+# DATABASE_URL=your_database_url
+```
+
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## 📝 License
 
@@ -152,9 +244,11 @@ This project is open source and available under the MIT License.
 
 ## 🔗 Links
 
-- [TrustMRR Original](https://trustmrr.com)
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Tailwind CSS](https://tailwindcss.com)
+- **🌐 Live Application**: [trustmrr.netlify.app](https://trustmrr.netlify.app)
+- **📖 Original Design**: [TrustMRR](https://trustmrr.com) by Marc Lou
+- **⚡ Next.js Documentation**: [nextjs.org/docs](https://nextjs.org/docs)
+- **🎨 Tailwind CSS**: [tailwindcss.com](https://tailwindcss.com)
+- **📦 Radix UI**: [radix-ui.com](https://www.radix-ui.com)
 
 ---
 

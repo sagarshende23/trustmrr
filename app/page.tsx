@@ -92,7 +92,7 @@ export default function Home() {
     } else if (type === "founder") {
       router.push(`/founder/${value}`);
     } else if (type === "category") {
-      router.push(`/category/${value.toLowerCase().replace(" ", "-")}`);
+      router.push(`/category/${String(value).toLowerCase().replace(" ", "-")}`);
     }
   };
 
